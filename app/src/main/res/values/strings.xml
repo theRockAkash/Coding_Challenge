@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Coding Challenge</string>
+    <string name="articles">Articles</string>
+    <string name="article">Article</string>
+    <string name="search">Search</string>
+    <string name="article_image">Article image</string>
+    <string name="back_button">Back Button</string>
+    <string name="favorite_button">Favorite Button</string>
+    <string name="no_network">No Network</string>
+    <string name="back_online">Back Online</string>
+</resources>
