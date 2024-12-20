@@ -24,7 +24,7 @@ public class Article implements Serializable {
     private String content;
 
     public String getPublishedAt() {
-        return this.publishedAt;
+        return Objects.requireNonNullElse(this.publishedAt, "");
     }
 
     public void setPublishedAt(String publishedAt) {
@@ -40,7 +40,7 @@ public class Article implements Serializable {
     }
 
     public String getUrlToImage() {
-        return this.urlToImage;
+        return Objects.requireNonNullElse(this.urlToImage, "");
     }
 
     public void setUrlToImage(String urlToImage) {
@@ -48,9 +48,7 @@ public class Article implements Serializable {
     }
 
     public String getDescription() {
-        if(this.description!=null)
-        return this.description;
-        else return  "";
+        return Objects.requireNonNullElse(this.description, "");
     }
 
     public void setDescription(String description) {
@@ -66,7 +64,7 @@ public class Article implements Serializable {
     }
 
     public String getTitle() {
-        return this.title;
+        return Objects.requireNonNullElse(this.title, "");
     }
 
     public void setTitle(String title) {
@@ -94,20 +92,20 @@ public class Article implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Article article = (Article) o;
-        return title.equals(article.title);
+        return getTitle().equals(article.getTitle())&&getDescription().equals(article.getDescription());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(getTitle());
     }
     @NonNull
     @Override
     public String toString() {
         return "Article{" +
-                "title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", publishedAt='" + publishedAt + '\'' +
+                "title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", publishedAt='" + getPublishedAt() + '\'' +
                 '}';
     }
 }
